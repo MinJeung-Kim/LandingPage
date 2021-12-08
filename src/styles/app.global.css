@@ -1,0 +1,98 @@
+@import "./common/reset.css";
+
+/*
+Variables
+*/
+:root {
+  --main-color-blue: #00adee;
+  --main-color-white: #ffffff;
+}
+
+/*
+Fonts
+*/
+
+/*
+Default styles
+*/
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+input,
+input::-webkit-input-placeholder,
+textarea,
+select {
+  font-family: "Karla", -apple-system, BlinkMacSystemFont, "Segoe WPC",
+    "Segoe UI", "Ubuntu", "Droid Sans", sans-serif;
+  font-size: 16px;
+  color: var(--app-text-color);
+}
+
+input::-webkit-input-placeholder {
+  opacity: 0.6;
+}
+
+body {
+  /** Make the app feel more native */
+  user-select: none;
+  cursor: default;
+}
+
+button {
+  background: transparent;
+  padding: 0;
+  border: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: auto;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+p {
+  line-height: 1.5rem;
+}
+/* 
+p:not(:last-child) {
+  margin-bottom: 1rem;
+} */
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+a,
+img {
+  -webkit-user-drag: none;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}

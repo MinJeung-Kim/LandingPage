@@ -1,0 +1,129 @@
+section {
+  position: relative;
+  width: 60%;
+}
+
+.main {
+  padding: 50px 0 200px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 500;
+  padding: 2rem;
+  text-align: center;
+  word-spacing: 10px;
+}
+.contentBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.gridBox {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, 262px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 10px;
+  padding: 0 1rem;
+}
+.preBtn,
+.nextBtn {
+  cursor: pointer;
+  color: transparent;
+}
+.preBtn::before,
+.preBtn::after {
+  position: absolute;
+  top: 46%;
+  left: 0;
+  content: "";
+  width: 40px;
+  height: 5px;
+  background: #eee;
+  transform: rotate(-35deg);
+}
+.preBtn::after {
+  top: 50%;
+  transform: rotate(35deg);
+}
+.nextBtn::before,
+.nextBtn::after {
+  position: absolute;
+  top: 46%;
+  right: 0;
+  content: "";
+  width: 40px;
+  height: 5px;
+  background: #eee;
+  transform: rotate(35deg);
+}
+.nextBtn::after {
+  top: 50%;
+  transform: rotate(-35deg);
+}
+.room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #eee;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.stateBar {
+  display: flex;
+  width: 100%;
+  font-weight: bold;
+  font-size: revert;
+  margin-bottom: 1.5rem;
+}
+.profileBox,
+.conditionBox {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  padding: 1rem;
+}
+.profile {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #eee;
+  background: #eee;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+.nick {
+}
+.conditionBox {
+  justify-content: end;
+}
+.icon {
+  padding-right: 1rem;
+  color: #9c9c9c;
+}
+.isJoin {
+}
+.roomTitle {
+  font-size: large;
+  margin-bottom: 1.5rem;
+  line-height: 23px;
+  word-spacing: -2px;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.buttons button:hover {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ff946d),
+    to(#ff7d68)
+  );
+}

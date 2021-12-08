@@ -1,0 +1,42 @@
+section {
+  position: relative;
+  width: 60%;
+}
+.main {
+  display: flex;
+  padding: 157px 0 50px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.leftContent,
+.rightContent {
+  width: 50%;
+}
+
+.title {
+  color: var(--main-color-white);
+  font-size: 4rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.content {
+  margin-bottom: 3rem !important;
+  color: var(--main-color-white);
+  font-size: 1.2rem;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.button {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.button button {
+  box-shadow: -2px 4px 9px #3567b4;
+}
+
+.rightContent img {
+  width: 100%;
+}

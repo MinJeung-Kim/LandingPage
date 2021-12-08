@@ -1,0 +1,9 @@
+.container {
+  width: 44%;
+  border: 0;
+  border-radius: 0.5em;
+  background: #007bff;
+  color: var(--main-color-white);
+  padding: 0.8rem;
+  text-align: center;
+}
