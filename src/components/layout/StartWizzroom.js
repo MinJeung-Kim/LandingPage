@@ -11,6 +11,7 @@ function StartWizzroom({ scrollToId }) {
   return (
     <section className={(styles.section, styles.main)} id={scrollToId}>
       <div className={styles.contentBox}>
+        {/* eslint-disable-next-line */}
         <img src="./image/bg.png" />
         <div className={styles.content}>
           <MainTitle title={title} subTitle={subTitle} />

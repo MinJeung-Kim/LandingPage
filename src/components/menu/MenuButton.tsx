@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./MenuButton.module.css";
 
-function MenuButton({ menuName, icon }) {
+interface stateProps {
+  menuName?: string | undefined;
+  icon?: string | undefined;
+}
+
+const MenuButton: React.SFC<stateProps> = ({ menuName, icon }) => {
   const onClick = () => {
     if (menuName === "로그인") {
       window.location.href = "https://www.wizzney.com/login";
@@ -14,6 +19,6 @@ function MenuButton({ menuName, icon }) {
       <span>{icon === "" ? "" : icon}</span> {menuName}
     </button>
   );
-}
+};
 
 export default MenuButton;
