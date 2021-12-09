@@ -11,3 +11,18 @@ export const getPost = async () => {
 
   return response;
 };
+export const addPost = async ({
+  contactTitle,
+  content,
+  email,
+  select,
+  check,
+}: {
+  contactTitle: string;
+  content: string;
+  email: string;
+  select: number;
+  check: boolean;
+}) => {
+  await api.post("/posts", { email, contactTitle, content, select, check });
+};

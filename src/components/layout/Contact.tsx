@@ -1,31 +1,93 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import MainTitle from "../common/MainTitle";
 import styles from "./Contact.module.css";
-import {
-  Form,
-  Row,
-  InputGroup,
-  Button,
-  Col,
-  FloatingLabel,
-  Table,
-} from "react-bootstrap";
+import { Form, Row, InputGroup, Button, Col, Table } from "react-bootstrap";
+import { addPost, getPost } from "../../api";
 
-function Contact({ scrollToId }) {
+interface Post {
+  id: number;
+  select: number;
+  email: string;
+  contactTitle: string;
+  content: string;
+  check: boolean;
+}
+
+interface Props {
+  scrollToId: string;
+}
+
+const Contact: React.SFC<Props> = ({ scrollToId }) => {
+  const [contactTitle, setContactTitle] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [select, setSelect] = useState<number>(1);
+  const [check, setCheck] = useState<boolean>(false);
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  const getPosts = async () => {
+    const response = await getPost();
+    setPosts(response.data);
+  };
+
+  const handleTitleChange = ({
+    target: { value },
+  }: {
+    target: { value: string };
+  }) => {
+    setContactTitle(value);
+  };
+
+  const handleContentChange = ({
+    target: { value },
+  }: {
+    target: { value: string };
+  }) => {
+    setContent(value);
+  };
+
+  const handleEmailChange = ({
+    target: { value },
+  }: {
+    target: { value: string };
+  }) => {
+    setEmail(value);
+  };
+
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    let num: number = parseInt(e.target.value);
+    setSelect(num);
+  };
+
+  const handleCheckChange = () => {
+    setCheck(!check);
+    console.log(check);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      setContactTitle("");
+      setContent("");
+      setEmail("");
+      getPosts();
+    }
+
+    addPost({ contactTitle, content, email, select, check });
+    setValidated(true);
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
   const title = "Contact";
   const subTitle = "위즈니 바로가기를 통해 알아보세요!";
 
   const [validated, setValidated] = useState(false);
-
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
-  };
 
   const onClick = () => {
     window.location.href = "https://www.wizzney.com/main?isRoot=1";
@@ -65,8 +127,9 @@ function Contact({ scrollToId }) {
           <Row className="mb-3">
             <Form.Group as={Col} md="3" controlId="validationCustom01">
               <Form.Label>문의항목</Form.Label>
-              <Form.Select>
-                <option>사용문의</option>
+              <Form.Select value={select} onChange={handleSelectChange}>
+                <option value={1}>사용문의</option>
+                <option value={2}>오류문의</option>
               </Form.Select>
             </Form.Group>
             <Form.Group as={Col} md="3" controlId="validationCustom02">
@@ -76,6 +139,8 @@ function Contact({ scrollToId }) {
                   required
                   type="email"
                   placeholder="name@example.com"
+                  value={email}
+                  onChange={handleEmailChange}
                 />
                 <Form.Control.Feedback type="invalid">
                   이메일을 정확히 입력해주세요.
@@ -91,6 +156,8 @@ function Contact({ scrollToId }) {
                   maxLength={20}
                   aria-describedby="inputGroupPrepend"
                   required
+                  value={contactTitle}
+                  onChange={handleTitleChange}
                 />
                 <Form.Control.Feedback type="invalid">
                   제목을 입력해주세요.
@@ -101,17 +168,17 @@ function Contact({ scrollToId }) {
           <Row className="mb-3">
             <Form.Group as={Col} md="12" controlId="validationCustom04">
               <Form.Label>내용</Form.Label>
-              <FloatingLabel controlId="floatingTextarea2">
-                <Form.Control
-                  required
-                  as="textarea"
-                  placeholder="Leave a comment here"
-                  style={{ height: "100px" }}
-                />
-                <Form.Control.Feedback type="invalid">
-                  내용을 입력해주세요.
-                </Form.Control.Feedback>
-              </FloatingLabel>
+              <Form.Control
+                required
+                as="textarea"
+                placeholder="내용을 입력해주세요."
+                style={{ height: "100px" }}
+                value={content}
+                onChange={handleContentChange}
+              />
+              <Form.Control.Feedback type="invalid">
+                내용을 입력해주세요.
+              </Form.Control.Feedback>
             </Form.Group>
           </Row>
           <Row className="mb-3">
@@ -144,6 +211,8 @@ function Contact({ scrollToId }) {
               label="위 내용에 동의합니다. "
               feedback="개인정보수집 · 이용에 동의해주세요. "
               feedbackType="invalid"
+              defaultChecked={check}
+              onChange={handleCheckChange}
             />
           </Form.Group>
           <Button type="submit">문의접수</Button>
@@ -151,6 +220,6 @@ function Contact({ scrollToId }) {
       </div>
     </section>
   );
-}
+};
 
 export default Contact;
