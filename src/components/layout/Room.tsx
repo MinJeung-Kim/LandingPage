@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Room.module.css";
 import MenuButton from "../menu/MenuButton";
 
 export interface Props {
   key: number;
-  profile?: string | undefined;
+  profile?: string | null;
   nick: string;
   usertitle: string;
-  public: boolean;
+  public: number;
   headcount: number;
 }
 
@@ -21,7 +21,7 @@ const Room: React.SFC<Props> = ({ ...props }) => {
         </div>
         <div className={styles.conditionBox}>
           <span className={styles.icon}>
-            {props.public && <i className="fas fa-lock"></i>}
+            {props.public === 2 && <i className="fas fa-lock"></i>}
           </span>
           <span className={styles.isJoin}>
             <span style={{ color: "red" }}>2</span>/{props.headcount}

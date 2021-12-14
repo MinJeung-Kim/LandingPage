@@ -4,13 +4,16 @@ const api = axios.create({
   baseURL: "http://localhost:3003",
 });
 
-const POST = "/users";
-
-export const getPost = async () => {
-  const response = await api.get(POST);
-
+export const isLogin = async () => {
+  const response = await api.get("/login");
   return response;
 };
+
+export const getRoom = async () => {
+  const response = await api.get("/rooms");
+  return response;
+};
+
 export const addPost = async ({
   contactTitle,
   content,
