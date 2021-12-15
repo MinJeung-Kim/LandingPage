@@ -6,11 +6,10 @@ import styles from "./JoinWizzroom.module.css";
 import Room from "./Room";
 
 interface Post {
-  id: number;
+  id: string;
   profile: string | null;
-  avatar: string;
   roomtitle: string;
-  username: string;
+  userId: string;
   sessionMode: number;
   maxUsers: number;
 }
@@ -39,12 +38,12 @@ const JoinWizzroom: React.SFC<Props> = ({ scrollToId }) => {
         <div className={styles.gridBox}>
           {users.map((user) => (
             <Room
-              key={user.id}
+              id={user.id}
               profile={user.profile}
-              nick={user.username}
-              usertitle={user.roomtitle}
-              public={user.sessionMode}
-              headcount={user.maxUsers}
+              userId={user.userId}
+              roomtitle={user.roomtitle}
+              sessionMode={user.sessionMode}
+              maxUsers={user.maxUsers}
             />
           ))}
         </div>

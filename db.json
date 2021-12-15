@@ -35,10 +35,10 @@
   "rooms": [
     {
       "id": "3dd389d83da3112b51d566484640b366fabdda1020e343b617288bd902cd9525",
-      "roomtitle": "testㅑㅑㅑ",
-      "username": "닉네임",
+      "userId": "test@test.com",
+      "roomtitle": "test",
       "sessionMode": 2,
-      "maxUsers": 2
+      "maxUsers": 8
     }
   ]
 }
