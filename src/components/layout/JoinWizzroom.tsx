@@ -23,6 +23,8 @@ const JoinWizzroom: React.SFC<Props> = ({ scrollToId }) => {
 
   const getRooms = async (): Promise<any> => {
     const response = await getRoom();
+    console.log("getRooms", response);
+
     setUsers(response.data);
   };
 
@@ -35,18 +37,24 @@ const JoinWizzroom: React.SFC<Props> = ({ scrollToId }) => {
       <MainTitle title={text.joinTitle} subTitle={text.joinText} />
       <div className={styles.contentBox}>
         <div className={styles.preBtn}>{text.preBtn}</div>
-        <div className={styles.gridBox}>
-          {users.map((user) => (
-            <Room
-              id={user.id}
-              profile={user.profile}
-              userId={user.userId}
-              roomtitle={user.roomtitle}
-              sessionMode={user.sessionMode}
-              maxUsers={user.maxUsers}
-            />
-          ))}
-        </div>
+
+        {users.length <= 0 ? (
+          <p className={styles.noneData}>{text.clickCreateWizroom}</p>
+        ) : (
+          <div className={styles.gridBox}>
+            {users.map((user) => (
+              <Room
+                id={user.id}
+                profile={user.profile}
+                userId={user.userId}
+                roomtitle={user.roomtitle}
+                sessionMode={user.sessionMode}
+                maxUsers={user.maxUsers}
+              />
+            ))}
+          </div>
+        )}
+
         <div className={styles.nextBtn}>{text.nextBtn}</div>
       </div>
     </section>

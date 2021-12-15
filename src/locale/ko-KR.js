@@ -11,6 +11,7 @@ export const text = {
   contentFeedback: "내용을 입력해주세요.",
   check: "위 내용에 동의합니다.",
   checkFeedback: "개인정보수집 · 이용에 동의해주세요.",
+  clickCreateWizroom: "☝☝☝ 위즈룸 만들기 버튼을 클릭해보세요 !",
   download: "위즈룸 다운로드",
   email: "이메일",
   emailFeedback: "이메일을 정확히 입력해주세요.",

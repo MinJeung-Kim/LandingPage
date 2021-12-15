@@ -15,6 +15,8 @@ export interface Props {
 const Room: React.SFC<Props> = ({ ...props }) => {
   console.log(props);
   const handelonClick = () => {
+    // 1. 랜딩페이지에서 로그인된 상태로 참여하면 게스트 로그인 X
+    // 2. 위즈룸 생성 여부 검증 api 추가하기
     window.location.href = `http://localhost:8080/#/room/${props.id}`;
   };
   return (
