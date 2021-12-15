@@ -22,6 +22,7 @@ const MenuBar = React.memo(() => {
   const login = async () => {
     const response = await isLogin();
     localStorage.setItem("token", response.data.token);
+    localStorage.setItem("userId", response.data.userId);
     setInfo(response.data);
   };
 
