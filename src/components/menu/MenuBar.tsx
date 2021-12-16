@@ -17,6 +17,7 @@ interface Post {
 
 const MenuBar = React.memo(() => {
   const [info, setInfo] = useState<Post>();
+  const [isToggleOn, setIsToggleOn] = useState(false);
 
   // 로그인
   const login = async () => {
@@ -38,6 +39,7 @@ const MenuBar = React.memo(() => {
   };
 
   const onClick = (e: any) => {
+    setIsToggleOn(!isToggleOn);
     if (e.target.innerText === `${text.login}`) {
       login();
     } else if (e.target.innerText === `${text.make}`) {
@@ -79,7 +81,7 @@ const MenuBar = React.memo(() => {
           menuName={info ? text.mypage : text.login}
           onClick={onClick}
         />
-        {info && <MyPage info={info} setInfo={setInfo} />}
+        {info && isToggleOn && <MyPage info={info} setInfo={setInfo} />}
       </div>
     </div>
   );

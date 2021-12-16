@@ -13,7 +13,7 @@ export interface Props {
 }
 
 const Room: React.SFC<Props> = ({ ...props }) => {
-  console.log(props);
+  console.log("Room props", props);
   const handelonClick = () => {
     // 1. 랜딩페이지에서 로그인된 상태로 참여하면 게스트 로그인 X
     // 2. 위즈룸 생성 여부 검증 api 추가하기
@@ -31,7 +31,8 @@ const Room: React.SFC<Props> = ({ ...props }) => {
             {props.sessionMode === 2 && <i className="fas fa-lock"></i>}
           </span>
           <span className={styles.isJoin}>
-            <span style={{ color: "red" }}>2</span>/{props.maxUsers}
+            <span style={{ color: "red" }}>2</span>/
+            {props.maxUsers === 0 ? "무제한" : props.maxUsers}
           </span>
         </div>
       </div>

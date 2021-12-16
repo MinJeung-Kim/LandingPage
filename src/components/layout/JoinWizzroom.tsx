@@ -23,7 +23,6 @@ const JoinWizzroom: React.SFC<Props> = ({ scrollToId }) => {
 
   const getRooms = async (): Promise<any> => {
     const response = await getRoom();
-    console.log("getRooms", response);
 
     setUsers(response.data);
   };
@@ -44,6 +43,7 @@ const JoinWizzroom: React.SFC<Props> = ({ scrollToId }) => {
           <div className={styles.gridBox}>
             {users.map((user) => (
               <Room
+                key={user.id}
                 id={user.id}
                 profile={user.profile}
                 userId={user.userId}
