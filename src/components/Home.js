@@ -27,6 +27,7 @@ function Home() {
   };
 
   window.addEventListener("scroll", toggleVisible);
+
   return (
     <div className={styles.container}>
       <div

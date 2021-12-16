@@ -1,0 +1,26 @@
+.myPage {
+  position: absolute;
+  right: 19%;
+  top: 97%;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #c9d1d2ed;
+  padding: 2.5rem 1rem;
+  border-radius: 5%;
+  box-shadow: 1px 0px 6px #7d7d7d;
+}
+.profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #090904;
+}
+.nick {
+}
+.userId {
+}
+.logout {
+  padding-top: 2rem;
+}
