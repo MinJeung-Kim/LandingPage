@@ -17,6 +17,11 @@
   border-radius: 50%;
   background: #090904;
 }
+
+.profile img {
+  width: 50px;
+  border-radius: 50%;
+}
 .nick {
 }
 .userId {

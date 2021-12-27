@@ -15,9 +15,7 @@ function StartWizzroom({ scrollToId }) {
 
   const handelonClick = () => {
     localStorage.getItem("token") !== null
-      ? (window.location.href = `http://localhost:8080/#/room/${localStorage.getItem(
-          "token"
-        )}`)
+      ? (window.location.href = `http://localhost:8080/#/room/`)
       : alert(`${text.loggingInWithWizzney}`);
   };
 

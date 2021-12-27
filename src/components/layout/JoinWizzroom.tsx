@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { getRoom } from "../../api";
 import { text } from "../../locale/ko-KR";
 import MainTitle from "../common/MainTitle";
 import styles from "./JoinWizzroom.module.css";
 import Room from "./Room";
+import axios from "axios";
 
 interface Post {
   id: string;
   profile: string | null;
-  roomtitle: string;
-  userId: string;
+  roomTitle: string;
+  nick: string;
   sessionMode: number;
   maxUsers: number;
 }
@@ -21,14 +21,24 @@ interface Props {
 const JoinWizzroom: React.SFC<Props> = ({ scrollToId }) => {
   const [users, setUsers] = useState<Post[]>([]);
 
-  const getRooms = async (): Promise<any> => {
-    const response = await getRoom();
+  // const getRooms = async (): Promise<any> => {
+  //   const response = await getRoom();
 
-    setUsers(response.data);
-  };
+  // setUsers(response.data);
 
   useEffect(() => {
-    getRooms();
+    const params = { page: 1 };
+    // 방 리스트 api
+
+    axios
+      .post("https://black-mobile.wizzney.com/api/wizzroom/list", params, {})
+      .then((response) => {
+        if (response.data.resultCode === "0000") {
+          console.log("!!!!!!!!!MenuButton.tsx!!!!!!!!", response.data.list);
+          setUsers(response.data.list);
+        }
+        // setUsers(response)
+      });
   }, []);
 
   return (
@@ -43,11 +53,10 @@ const JoinWizzroom: React.SFC<Props> = ({ scrollToId }) => {
           <div className={styles.gridBox}>
             {users.map((user) => (
               <Room
-                key={user.id}
                 id={user.id}
                 profile={user.profile}
-                userId={user.userId}
-                roomtitle={user.roomtitle}
+                nick={user.nick}
+                roomTitle={user.roomTitle}
                 sessionMode={user.sessionMode}
                 maxUsers={user.maxUsers}
               />

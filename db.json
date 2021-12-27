@@ -14,22 +14,6 @@
       "contactTitle": "Ipsum Loren",
       "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       "check": true
-    },
-    {
-      "email": "aaaaaa@aaa",
-      "contactTitle": "aaaaa",
-      "content": "aaaaaaa",
-      "select": 2,
-      "check": true,
-      "id": 2
-    },
-    {
-      "email": "zzzzz@zz",
-      "contactTitle": "zzzz",
-      "content": "zzzzz",
-      "select": 2,
-      "check": true,
-      "id": 3
     }
   ],
   "rooms": [
@@ -37,7 +21,7 @@
       "id": "3dd389d83da3112b51d566484640b366fabdda1020e343b617288bd902cd9525",
       "userId": "test@test.com",
       "roomtitle": "넷플릭스 같이 즐겨요 !!!!!!",
-      "sessionMode": 2,
+      "sessionMode": 0,
       "maxUsers": 0
     }
   ]
